@@ -22,16 +22,16 @@ export class UserRoles extends Model<UserRoles> {
   id: number;
 
   @ApiProperty({
-    example: '4121241241413',
-    description: 'Уникальное идентификатор роли',
+    example: '1',
+    description: 'Уникальный идентификатор роли',
   })
   @ForeignKey(() => Role)
   @Column({ type: DataType.INTEGER })
   roleId: number;
 
   @ApiProperty({
-    example: '2131412421412',
-    description: 'Уникальное идентификатор пользователя',
+    example: '1',
+    description: 'Уникальный идентификатор пользователя',
   })
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })

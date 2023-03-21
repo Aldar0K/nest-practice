@@ -39,7 +39,7 @@ export class User extends Model<User, UserCreationAttrs> {
 
   @ApiProperty({
     example: 'false',
-    description: 'Забанен пользователь или нет',
+    description: 'Забанен или нет',
   })
   @Column({ type: DataType.BOOLEAN, defaultValue: false })
   banned: boolean;
@@ -51,6 +51,6 @@ export class User extends Model<User, UserCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: true })
   banReason: string;
 
-  @BelongsToMany(() => User, () => UserRoles)
+  @BelongsToMany(() => Role, () => UserRoles)
   roles: Role[];
 }
