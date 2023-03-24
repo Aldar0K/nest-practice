@@ -57,18 +57,12 @@ export class AuthService {
       user.password,
     );
 
-    if (!user) {
-      throw new UnauthorizedException({
-        message: 'Некорректный email',
-      });
+    if (user || passwordEquals) {
+      return user;
     }
 
-    if (!passwordEquals) {
-      throw new UnauthorizedException({
-        message: 'Неверный пароль',
-      });
-    }
-
-    return user;
+    throw new UnauthorizedException({
+      message: 'Некорректный email или password',
+    });
   }
 }
