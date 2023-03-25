@@ -43,12 +43,12 @@ export class UsersController {
     return this.userService.addRole(dto);
   }
 
-  // @ApiOperation({ summary: 'Забанить пользователя' })
-  // @ApiResponse({ status: 200 })
-  // @Roles('ADMIN')
-  // @UseGuards(RolesGuard)
-  // @Post('/ban')
-  // ban(@Body() dto: BanUserDto) {
-  //   return this.userService.ban(dto);
-  // }
+  @ApiOperation({ summary: 'Забанить пользователя' })
+  @ApiResponse({ status: 200 })
+  @Roles('ADMIN')
+  @UseGuards(RolesGuard)
+  @Post('/ban')
+  ban(@Body() dto: BanUserDto) {
+    return this.userService.ban(dto);
+  }
 }
