@@ -3,6 +3,7 @@ import { DocumentBuilder } from '@nestjs/swagger';
 import { SwaggerModule } from '@nestjs/swagger/dist';
 
 import { AppModule } from './app.module';
+import { ValidationPipe } from './pipes/validation.pipe';
 
 async function bootstrap() {
   const port = process.env.PORT || 5000;
@@ -15,6 +16,8 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/docs', app, document);
+
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(port, () => console.log(`Sever started on port ${port}`));
 }
